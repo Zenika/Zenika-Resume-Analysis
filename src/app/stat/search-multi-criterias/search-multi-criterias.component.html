@@ -1,0 +1,149 @@
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <i class="fa fa-bar-chart-o fa-fw"></i>
+        Recherche via des critéres
+
+      </div>
+      <!-- /.panel-heading -->
+      <div class="panel-body">
+
+        <div class="form-group">
+          <label>Range - Années expérience</label>
+          <ng2slider *ngIf="minRangeNbAnneeExp"
+                     [min]="minRangeNbAnneeExp"
+                     [max]="maxRangeNbAnneeExp"
+                     [startValue]="minRangeNbAnneeExp"
+                     [endValue]="maxRangeNbAnneeExp"
+                     stepValue="1"
+                     (onRangeChanged)="nbAnneeExpRangeChange($event)">
+          </ng2slider>
+          <select [(ngModel)]="complexCriteriaFieldNbAnneeExpOp">
+            <option value="">--Style d'operation--</option>
+            <option *ngFor="let m of criteriaOperations" [value]="m">{{m}}</option>
+          </select>
+        </div>
+
+
+
+        <div class="form-group">
+          <label>Compétences techniques (java,css,..)</label>
+          <input type="text" (input)="onComplexCriteriaGlobalSkillsChange($event.target.value)"  size="30"/>
+
+          <select [(ngModel)]="complexCriteriaGlobalSkillsOp">
+            <option value="">--Style d'operation--</option>
+            <option *ngFor="let m of criteriaOperations" [value]="m">{{m}}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Mission - description</label>
+          <input type="text" (input)="onComplexCriteriaMissionDescChange($event.target.value)"  size="40"/>
+
+          <select [(ngModel)]="complexCriteriaDescOp">
+            <option value="">--Style d'operation--</option>
+            <option *ngFor="let m of criteriaOperations" [value]="m">{{m}}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Nom du client : </label>
+          <input type="text" [(ngModel)]="whoWorkCustomerVal" placeholder="contient.."/>
+
+          <select [(ngModel)]="complexCriteriaCustomerName">
+            <option value="">--Style d'operation--</option>
+            <option *ngFor="let m of criteriaOperations" [value]="m">{{m}}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Date de travail : </label>
+          <my-date-picker class="datePick" [options]="myDatePickerOptions"
+                          [(ngModel)]="dateChoiceMission"></my-date-picker>
+          <select [(ngModel)]="complexCriteriaWorkingDate">
+            <option value="">--Style d'operation--</option>
+            <option *ngFor="let m of criteriaOperations" [value]="m">{{m}}</option>
+          </select>
+        </div>
+
+
+        <br>
+
+        <button class="btn btn-primary" (click)="searchCriterias()">Rechercher</button>
+
+      </div>
+      <div class="panel panel-info">
+
+        <!--<div class="single-result-bloc">-->
+
+        <div class="panel-heading">
+          <div class="resp-structured">
+            Réponse
+          </div>
+        </div>
+        <div class="panel-body">
+
+          <h3>Response structured</h3>
+
+          <p> nombre de resultat :{{resultSearchCriterias?.hits.total}} </p>
+
+          <table>
+            <thead>
+            <tr>
+              <th>prénom</th>
+              <th>nom</th>
+              <th>mission description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of resultSearchCriterias?.hits.hits | paginate: { itemsPerPage: totalNumberByPage, currentPage: currentNumberPage , totalItems: resultSearchCriterias?.hits.total}">
+              <td>{{user._source.firstname}}</td>
+              <td>{{user._source.lastname}}</td>
+              <td [innerHTML]="user.highlight && user.highlight['missions.description']">
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
+          <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+
+
+          <br>
+          <br>
+
+          <div class="single-result-bloc">
+
+
+            <div class="resp-original" style="width: 50%;">
+              <h3>Response original</h3>
+              <div>
+              <pre>
+                    {{resultSearchCriterias | json }}
+              </pre>
+              </div>
+            </div>
+
+
+            <div class="resp-original" style="width: 50%;">
+              <h3>Request</h3>
+              <div>
+              <pre>
+                    {{requestSearchCriterias | json }}
+              </pre>
+              </div>
+            </div>
+            </div>
+         </div>
+
+      </div>
+    </div>
+
+  </div>
+  <!-- /.panel-body -->
+</div>
+
+
+
+

@@ -1,0 +1,11 @@
+{
+"_source": [ "firstname", "lastname","email","hobbies" ],
+"query": {
+  "fuzzy" : {
+      "hobbies" : {
+                "value" : "jeux",
+                "fuzziness": "2"
+                }
+            }
+        }
+}

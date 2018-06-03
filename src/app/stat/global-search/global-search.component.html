@@ -1,0 +1,67 @@
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <i class="fa fa-bar-chart-o fa-fw"></i> Recherche absolue
+
+      </div>
+      <!-- /.panel-heading -->
+      <div class="panel-body">
+        <input type="text" class="form-control" (input)="onAllFieldsChange($event.target.value)" placeholder="texte..."/>
+      </div>
+      <div class="panel panel-info">
+
+        <!--<div class="single-result-bloc">-->
+
+        <div class="panel-heading">
+          <div class="resp-structured">
+            Réponse structurée
+          </div>
+        </div>
+        <div class="panel-body">
+
+           <p> nombre de resultat :{{resultAllFields?.hits.total}} </p>
+          <table>
+            <thead>
+            <tr>
+              <th>prenom</th>
+              <th>nom</th>
+              <th>mail</th>
+              <th>hobbies</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of resultAllFields?.hits.hits">
+              <td>{{user._source.firstname}}</td>
+              <td>{{user._source.lastname}}</td>
+              <td>{{user._source.email}}</td>
+              <td>{{user._source.hobbies}}</td>
+            </tr>
+            </tbody>
+          </table>
+          <!--</div>-->
+        </div>
+
+        <div class="panel panel-info">
+
+          <!--<div class="single-result-bloc">-->
+
+          <div class="panel-heading">
+            <div class="resp-original">
+              Réponse original
+            </div>
+          </div>
+          <div class="panel-body">
+            <pre>
+          {{resultAllFields | json }}
+            </pre>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /.panel-body -->
+</div>

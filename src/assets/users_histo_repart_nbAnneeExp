@@ -1,0 +1,18 @@
+{
+ "_source": "",
+  "aggs": {
+    "price": {
+      "histogram": {
+        "field": "nbAnneeExp",
+        "interval": 5
+      },
+      "aggs": {
+        "exp": {
+          "avg": {
+            "field": "nbAnneeExp"
+          }
+        }
+      }
+    }
+  }
+}

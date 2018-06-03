@@ -1,0 +1,25 @@
+.single-result-bloc{
+  display: flex;
+}
+
+.resp-structured,.resp-original{
+  flex: 1;
+
+}
+
+.complexCriteria{
+  display: flex;
+}
+
+em{
+  font-weight: bold;
+  color: blue;
+}
+
+.datePick .mydp {
+  width: 10% !important;
+}
+
+pre {
+  overflow: auto;
+}

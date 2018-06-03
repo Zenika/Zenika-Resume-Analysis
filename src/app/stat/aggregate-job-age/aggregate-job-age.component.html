@@ -1,0 +1,61 @@
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <i class="fa fa-bar-chart-o fa-fw"></i>Repartition nb personnes par métier et moyenne age
+      </div>
+
+      <div class="panel panel-info">
+
+        <!--<div class="single-result-bloc">-->
+
+        <div class="panel-heading">
+          <div class="resp-structured">
+            Réponse structurée
+          </div>
+        </div>
+        <div class="panel-body">
+
+          <table>
+            <thead>
+            <tr>
+              <th>Metier</th>
+              <th>Total</th>
+              <th>Moyenne d'âge</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of resultRepartMetier?.aggregations.roles.buckets">
+              <td>{{user.key}}</td>
+              <td>{{user.doc_count}}</td>
+              <td>{{user.avg_nbAnneeExp.value}}</td>
+            </tr>
+            </tbody>
+          </table>
+          <!--</div>-->
+        </div>
+
+        <div class="panel panel-info">
+
+          <!--<div class="single-result-bloc">-->
+
+          <div class="panel-heading">
+            <div class="resp-original">
+              Réponse original
+            </div>
+          </div>
+          <div class="panel-body">
+            <pre>
+          {{resultRepartMetier | json }}
+            </pre>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /.panel-body -->
+</div>
+

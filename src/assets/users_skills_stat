@@ -1,0 +1,28 @@
+{
+  "size" : 0,
+  "aggs": {
+    "skills": {
+      "terms": {
+        "field": "globalSkills.keyword",
+        "size": 500
+      },
+      "aggs": {
+        "avg_nbAnneeExp": {
+          "avg": {
+            "field": "nbAnneeExp"
+          }
+        },
+        "max_exp": {
+          "max":{
+            "field": "nbAnneeExp"
+          }
+        },
+        "min_exp": {
+          "min":{
+            "field": "nbAnneeExp"
+          }
+        }
+      }
+    }
+  }
+}

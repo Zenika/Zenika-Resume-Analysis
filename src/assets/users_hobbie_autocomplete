@@ -1,0 +1,11 @@
+{
+"_source": "suggest",
+"suggest": {
+        "hobbies" : {
+            "prefix" : "jeux",
+            "completion" : {
+                "field" : "hobbies.completion"
+            }
+        }
+    }
+}

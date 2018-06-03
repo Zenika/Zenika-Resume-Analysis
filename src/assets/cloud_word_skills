@@ -1,0 +1,11 @@
+{
+  "size" :"0",
+  "query" : {
+      "terms" : {"globalSkills.folded_lowercase" : [ "" ]}
+  },
+  "aggregations" : {
+      "significant_skills" : {
+          "significant_terms" : { "field" : "globalSkills.keyword" }
+      }
+  }
+}

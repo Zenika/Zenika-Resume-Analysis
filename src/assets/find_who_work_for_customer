@@ -1,0 +1,33 @@
+{
+"_source": ["firstname","missions.startDate", "missions.endDate","missions.location"],
+  "query": {
+    "nested": {
+      "path": "missions",
+      "query": {
+        "bool": {
+          "must": [
+            {
+              "range": {
+                "missions.startDate": {
+                  "lte": "2013-01-01"
+                }
+              }
+            },
+            {
+              "range": {
+                "missions.endDate": {
+                  "gte": "2013-01-01"
+                }
+              }
+            },
+            {
+              "match": {
+                "missions.location": "MBDA"
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+"_source": "fullname",
+  "aggs": {
+    "roles": {
+      "terms": {
+        "field": "roles.keyword",
+        "size": 100
+      },
+      "aggs": {
+        "avg_nbAnneeExp": {
+          "avg": {
+            "field": "nbAnneeExp"
+          }
+        }
+      }
+    }
+  }
+}

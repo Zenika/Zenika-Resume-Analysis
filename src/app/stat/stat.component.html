@@ -1,0 +1,142 @@
+
+<h2> Recherche via des critéres</h2>
+
+<br>
+<br>
+
+<div>Range - Années expérience</div>
+
+
+<div class="complexCriteria">
+
+
+  <div>
+<ng2slider *ngIf="minRangeNbAnneeExp"
+  [min]="minRangeNbAnneeExp"
+  [max]="maxRangeNbAnneeExp"
+  [startValue]="minRangeNbAnneeExp"
+  [endValue]="maxRangeNbAnneeExp"
+  stepValue="1"
+  (onRangeChanged)="nbAnneeExpRangeChange($event)">
+</ng2slider>
+ <select [(ngModel)]="complexCriteriaFieldNbAnneeExpOp">
+  <option value="">--Style d'operation--</option>
+  <option *ngFor="let m of criteriaOperations" [value]="m">{{m}}</option>
+</select>
+  </div>
+
+<div>
+  <label>Compétences techniques (java,css,..)</label>
+  <br>
+<input type="text" (input)="onComplexCriteriaGlobalSkillsChange($event.target.value)"  size="30"/>
+  <br>
+  <br>
+
+  <select [(ngModel)]="complexCriteriaGlobalSkillsOp">
+  <option value="">--Style d'operation--</option>
+  <option *ngFor="let m of criteriaOperations" [value]="m">{{m}}</option>
+</select>
+</div>
+
+  <div>
+    <label>Mission - description</label>
+    <br>
+    <input type="text" (input)="onComplexCriteriaMissionDescChange($event.target.value)"  size="40"/>
+    <br>
+    <br>
+
+    <select [(ngModel)]="complexCriteriaDescOp">
+      <option value="">--Style d'operation--</option>
+      <option *ngFor="let m of criteriaOperations" [value]="m">{{m}}</option>
+    </select>
+  </div>
+
+</div>
+
+<br>
+<div class="complexCriteria">
+
+  <div>
+      <label>Nom du client : </label>
+      <input type="text" [(ngModel)]="whoWorkCustomerVal" placeholder="contient.."/>
+      <br>
+      <br>
+    <br>
+      <select [(ngModel)]="complexCriteriaCustomerName">
+        <option value="">--Style d'operation--</option>
+        <option *ngFor="let m of criteriaOperations" [value]="m">{{m}}</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Date de travail : </label>
+    <br>
+
+    <my-date-picker class="datePick" [options]="myDatePickerOptions"
+                    [(ngModel)]="dateChoiceMission"></my-date-picker>
+    <br>
+    <br>
+
+    <select [(ngModel)]="complexCriteriaWorkingDate">
+      <option value="">--Style d'operation--</option>
+      <option *ngFor="let m of criteriaOperations" [value]="m">{{m}}</option>
+    </select>
+</div>
+</div>
+
+<br>
+
+<button (click)="searchCriterias()">Rechercher</button>
+
+<div class="single-result-bloc">
+
+
+  <div class="resp-structured">
+
+    <h3>Response structured</h3>
+
+    <p> nombre de resultat :{{resultSearchCriterias?.hits.total}} </p>
+
+      <table>
+        <thead>
+        <tr>
+          <th>prénom</th>
+          <th>nom</th>
+          <th>mission description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let user of resultSearchCriterias?.hits.hits | paginate: { itemsPerPage: totalNumberByPage, currentPage: currentNumberPage , totalItems: resultSearchCriterias?.hits.total}">
+          <td>{{user._source.firstname}}</td>
+          <td>{{user._source.lastname}}</td>
+          <td [innerHTML]="user.highlight && user.highlight['missions.description']">
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+    <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+
+  </div>
+
+  <div class="resp-original" style="width: 10%;">
+    <h3>Response original</h3>
+    <div>
+    <pre>
+          {{resultSearchCriterias | json }}
+    </pre>
+    </div>
+  </div>
+
+
+  <div class="resp-original" style="width: 10%;">
+    <h3>Request</h3>
+    <div>
+    <pre>
+          {{requestSearchCriterias | json }}
+    </pre>
+    </div>
+  </div>
+
+</div>
+

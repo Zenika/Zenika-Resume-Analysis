@@ -1,0 +1,8 @@
+{
+"_source": [ "firstname", "lastname","email","hobbies" ],
+"query": {
+"match": {
+"hobbies.folded_lowercase": "Cinema"
+  }
+}
+}

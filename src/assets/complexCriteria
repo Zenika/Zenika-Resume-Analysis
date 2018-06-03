@@ -1,0 +1,40 @@
+{
+  "from" : 0,
+  "size" : 10,
+  "_source": [
+    "firstname",
+    "lastname",
+    "email",
+    "nbAnneeExp",
+    "globalSkills",
+    "missions.location",
+    "missions.description",
+    "missions.startDate",
+    "missions.endDate"
+  ],
+  "query": {
+    "bool": {
+      "boost": 1,
+      "must": [
+        {
+          "nested": {
+            "path": "missions",
+            "query": {
+              "bool": {
+                "must": [],
+                "should": [],
+                "filter": [],
+                "must_not": []
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "highlight": {
+    "fields": {
+      "missions.description": {}
+    }
+  }
+}

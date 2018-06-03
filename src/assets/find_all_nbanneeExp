@@ -1,0 +1,11 @@
+{
+ "size":"0",
+ "aggs": {
+    "exp": {
+      "terms": {
+        "field": "nbAnneeExp",
+        "size" : 199
+      }
+    }
+  }
+}

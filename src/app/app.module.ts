@@ -12,8 +12,6 @@ import {D3Service} from "d3-ng2-service";
 import {StatHistoNbAnneeExpComponent} from "./stat/stat-histo-nb-annee-exp/stat-histo-nb-annee-exp.component";
 import {D3SliderDirective} from "./common/slide/d3-slider.directive";
 import {Ng2SliderComponent} from "./common/ng2slide/ng2slide.component";
-import {SlideAbleDirective} from "ng2-slideable-directive/slideable.directive";
-import {Ng2StyledDirective} from "ng2-styled-directive/ng2-styled.directive";
 import {MyDatePickerModule} from "mydatepicker";
 import {NgxPaginationModule} from "ngx-pagination";
 import { PartTimeActivityComponent } from './stat/part-time-activity/part-time-activity.component';
@@ -35,6 +33,8 @@ import {
   NG_GAPI_CONFIG,
 } from "ng-gapi";
 import {RouterModule, Routes} from "@angular/router";
+import {SlideAbleDirective} from "./common/ng2-slideable-directive/slideable.directive";
+import {Ng2StyledDirective} from "./common/ng2-styled-directive/ng2-styled.directive";
 
 const gapiClientConfig: NgGapiClientConfig = {
   client_id: environment.googleApiId,

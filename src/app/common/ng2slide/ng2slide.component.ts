@@ -14,14 +14,10 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   EventEmitter,
-  ContentChildren,
-  QueryList,
   ViewContainerRef,
   Renderer
 } from '@angular/core'
-
-import {SlideAbleDirective, BoundingRectClass, IEventSlideAble} from 'ng2-slideable-directive/slideable.directive';
-import {Ng2StyledDirective} from "ng2-styled-directive/ng2-styled.directive";
+import {BoundingRectClass, IEventSlideAble, SlideAbleDirective} from "../ng2-slideable-directive/slideable.directive";
 
 export enum RangeHandle {Start, End, Both}
 
@@ -63,9 +59,9 @@ export class Ng2SliderComponent    {
   @ViewChild('endInput') endInputRef:ElementRef;
 
 
-  private range: Range;
-  private id;
-  private isRange: boolean = true;
+  range: Range;
+  id;
+  isRange: boolean = true;
 
 
   private handlers: {
@@ -105,7 +101,7 @@ export class Ng2SliderComponent    {
   // Self-instance
   public instance: Ng2SliderComponent;
 
-  private stepX: any;
+  stepX: any;
 
   constructor(private CDR:ChangeDetectorRef, private _elementRef: ElementRef, private _view: ViewContainerRef, private renderer: Renderer) {
     // Create self instance as property for comfortable providing it to SlideAble directive

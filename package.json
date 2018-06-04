@@ -41,8 +41,6 @@
     "mydatepicker": "^2.6.1",
     "ng-api": "^1.0.0",
     "ng-gapi": "0.0.51",
-    "ng2-slideable-directive": "^1.0.13",
-    "ng2-styled-directive": "^1.0.5",
     "ngx-pagination": "^3.0.3",
     "path": "^0.12.7",
     "rxjs": "^5.5.2",

@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  googleApiId:'608125294381-iq3cb7q0kkp7b3j0mr5a0qdtg2qfii9r.apps.googleusercontent.com'
+  googleApiId:'608125294381-iq3cb7q0kkp7b3j0mr5a0qdtg2qfii9r.apps.googleusercontent.com',
+  backendApi:'http://localhost:8080'
 };

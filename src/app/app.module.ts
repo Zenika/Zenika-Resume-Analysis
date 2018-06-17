@@ -35,6 +35,7 @@ import {
 import {RouterModule, Routes} from "@angular/router";
 import {SlideAbleDirective} from "./common/ng2-slideable-directive/slideable.directive";
 import {Ng2StyledDirective} from "./common/ng2-styled-directive/ng2-styled.directive";
+import {UserService} from "./security/user-service.service";
 
 const gapiClientConfig: NgGapiClientConfig = {
   client_id: environment.googleApiId,
@@ -95,7 +96,7 @@ const routes: Routes = [
       useValue: gapiClientConfig
     })
   ],
-  providers: [ElasticsearchService,D3Service,ImportUserService],
+  providers: [ElasticsearchService,D3Service,ImportUserService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -28,7 +28,7 @@ export class AppComponent {
   // }
   //
   // public getToken(): string {
-  //   let token: string = sessionStorage.getItem("accessToken");
+  //   let token: string = sess ionStorage.getItem("accessToken");
   //   if (!token) {
   //     throw new Error("no token set , authentication required");
   //   }

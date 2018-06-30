@@ -40,7 +40,7 @@ export class CloudWordComponent implements OnInit {
   onAllFieldsChange(valueFill) {
     this.httpClient.get('assets/cloud_word_skills').subscribe((value:any)=> {
       value.query.terms["globalSkills.folded_lowercase"] = [valueFill];
-      this.elasticsearchService.executePostRequest(value, 'formation-elastic-alias/doc/_search').subscribe(r =>{
+      this.elasticsearchService.executePostRequest(value).subscribe(r =>{
         this.results = r;
         if(this.results){
           this.wordData = this.results.aggregations.significant_skills.buckets.map(v=>{

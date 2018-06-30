@@ -1,28 +1,32 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-
+import {environment} from "../../../environments/environment";
+import  'rxjs/add/observable/fromPromise';
 
 @Injectable()
 export class ElasticsearchService {
 
-  private API_URL = 'http://localhost:9200/';
-
-  private headers: HttpHeaders;
-
-  constructor(
-    private http: HttpClient
-  ) {
-    this.headers = new HttpHeaders();
-    this.headers = this.headers.set('Content-Type', 'application/json; charset=utf-8');
+  constructor() {
   }
 
 
-  executePostRequest(request: any, actionUrl: String): Observable<any> {
-    return this.http.post(this.API_URL + actionUrl, request, {headers : this.headers}).map(data =>{
-      return data;
-    });
+  executePostRequest(request: any): Observable<any> {
+
+    return Observable.fromPromise(new Promise((resolve, reject) => {
+
+      var xhr = new XMLHttpRequest();
+
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+          resolve(JSON.parse(xhr.response));
+        }
+      }
+      xhr.open('POST', environment.backendApi+"/search", true);
+
+      xhr.withCredentials = true;
+      xhr.send(JSON.stringify(request));
+    }));
   }
 
 }

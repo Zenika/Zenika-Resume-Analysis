@@ -36,7 +36,7 @@ export class PartTimeActivityComponent implements OnInit {
 
     if (keyword) {
       this.queryStructHobbieAuto.suggest.hobbies.prefix = keyword;
-      return this.elasticsearchService.executePostRequest(this.queryStructHobbieAuto, 'formation-elastic-alias/doc/_search').map(r =>{
+      return this.elasticsearchService.executePostRequest(this.queryStructHobbieAuto).map(r =>{
         if(r.suggest.hobbies[0].length > 0){
           return Array.from(new Set(r.suggest.hobbies[0].options.map(opt => opt.text)));
         }
@@ -49,7 +49,7 @@ export class PartTimeActivityComponent implements OnInit {
   onHobbyChangeNormal(choice) {
     this.httpClient.get('assets/users_hobbie').subscribe((value:any)=> {
       value.query.match["hobbies.folded_lowercase"] = choice;
-      this.elasticsearchService.executePostRequest(value, 'formation-elastic-alias/doc/_search').subscribe(r =>{
+      this.elasticsearchService.executePostRequest(value).subscribe(r =>{
         this.resultHobbies = r;
       });
     });
@@ -59,7 +59,7 @@ export class PartTimeActivityComponent implements OnInit {
     this.httpClient.get('assets/users_hobbie_mode_fuzzy').subscribe((value:any)=> {
       value.query.fuzzy.hobbies.value = choice;
       value.query.fuzzy.hobbies.fuzziness = this.hobbieFuzzy;
-      this.elasticsearchService.executePostRequest(value, 'formation-elastic-alias/doc/_search').subscribe(r =>{
+      this.elasticsearchService.executePostRequest(value).subscribe(r =>{
         this.resultHobbies = r;
       });
     });
@@ -81,7 +81,7 @@ export class PartTimeActivityComponent implements OnInit {
       value.query.fuzzy.hobbies.value = this.hobbieText;
       value.query.fuzzy.hobbies.fuzziness = optFuz;
 
-      this.elasticsearchService.executePostRequest(value, 'formation-elastic-alias/doc/_search').subscribe(r =>{
+      this.elasticsearchService.executePostRequest(value).subscribe(r =>{
         this.resultHobbies = r;
       });
     });

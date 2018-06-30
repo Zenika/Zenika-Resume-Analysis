@@ -12,7 +12,7 @@ export class UserService {
 
 
   isLogged() : Promise<boolean> {
-    return this.http.get(environment.backendApi+"/user", { withCredentials: true })
+    return this.http.get(environment.backendApi+"/user")
       .toPromise()
       .then(res => res != null)
       .catch(err => {

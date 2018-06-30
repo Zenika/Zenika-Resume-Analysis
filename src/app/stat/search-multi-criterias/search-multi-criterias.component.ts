@@ -42,7 +42,7 @@ export class SearchMultiCriteriasComponent implements OnInit {
 
 
     this.httpClient.get('assets/find_all_nbanneeExp').subscribe((value:any)=> {
-      this.elasticsearchService.executePostRequest(value, 'formation-elastic-alias/doc/_search').subscribe(r =>{
+      this.elasticsearchService.executePostRequest(value).subscribe(r =>{
         this.maxRangeNbAnneeExp = Math.max(...r.aggregations.exp.buckets.map(b=>b.key));
         this.minRangeNbAnneeExp = Math.min(...r.aggregations.exp.buckets.map(b=>b.key));
       });
@@ -212,7 +212,7 @@ export class SearchMultiCriteriasComponent implements OnInit {
       this.requestSearchCriterias = value;
 
       console.log("criteria req after modif ",value);
-      this.elasticsearchService.executePostRequest(value, 'formation-elastic-alias/doc/_search').subscribe(r =>{
+      this.elasticsearchService.executePostRequest(value).subscribe(r =>{
         this.resultSearchCriterias = r;
       });
     });

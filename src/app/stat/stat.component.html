@@ -103,6 +103,7 @@
           <th>prénom</th>
           <th>nom</th>
           <th>mission description</th>
+          <th>cv</th>
         </tr>
         </thead>
         <tbody>
@@ -111,6 +112,7 @@
           <td>{{user._source.lastname}}</td>
           <td [innerHTML]="user.highlight && user.highlight['missions.description']">
           </td>
+          <td><a href="https://resume.zenika.com/{{user._id}}">Voir le cv</a></td>
         </tr>
         </tbody>
       </table>

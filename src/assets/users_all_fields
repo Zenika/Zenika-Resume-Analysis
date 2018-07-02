@@ -1,7 +1,7 @@
 {
   "query": {
     "match": {
-      "_all": "cinema"
+      "all_custom": "cinema"
     }
   }
 }

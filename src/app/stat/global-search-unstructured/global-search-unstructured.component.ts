@@ -27,4 +27,5 @@ export class GlobalSearchUnstructuredComponent implements OnInit {
       });
     });
   }
+
 }

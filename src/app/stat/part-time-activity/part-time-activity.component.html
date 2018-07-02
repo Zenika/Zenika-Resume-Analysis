@@ -45,6 +45,7 @@
                 <th>nom</th>
                 <th>mail</th>
                 <th>hobbies</th>
+                <th>cv</th>
               </tr>
               </thead>
               <tbody>
@@ -53,6 +54,8 @@
                 <td>{{user._source.lastname}}</td>
                 <td>{{user._source.email}}</td>
                 <td>{{user._source.hobbies}}</td>
+                <td><a href="https://resume.zenika.com/{{user._id}}">Voir le cv</a></td>
+
               </tr>
               </tbody>
             </table>

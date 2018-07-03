@@ -31,6 +31,7 @@ import {SlideAbleDirective} from "./common/ng2-slideable-directive/slideable.dir
 import {Ng2StyledDirective} from "./common/ng2-styled-directive/ng2-styled.directive";
 import {UserService} from "./security/user-service.service";
 import {WithCredentialsInterceptor} from "./security/WithCredentialsInterceptor";
+import {ANIMATION_TYPES, LoadingModule} from "ngx-loading";
 
 
 const routes: Routes = [
@@ -75,7 +76,15 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
     FormsModule,
-    NguiAutoCompleteModule
+    NguiAutoCompleteModule,
+    LoadingModule.forRoot({
+      animationType: ANIMATION_TYPES.wanderingCubes,
+      backdropBackgroundColour: 'rgba(0,0,0,0.1)',
+      backdropBorderRadius: '4px',
+      primaryColour: '#ffffff',
+      secondaryColour: '#ffffff',
+      tertiaryColour: '#ffffff'
+    })
   ],
   providers: [ElasticsearchService,D3Service,ImportUserService, UserService,
     {

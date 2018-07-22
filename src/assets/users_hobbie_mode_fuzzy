@@ -1,5 +1,6 @@
 {
 "_source": [ "firstname", "lastname","email","hobbies" ],
+"size": 300,
 "query": {
   "fuzzy" : {
       "hobbies" : {

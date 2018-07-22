@@ -1,5 +1,6 @@
 {
 "_source": "suggest",
+"size": 300,
 "suggest": {
         "hobbies" : {
             "prefix" : "jeux",

@@ -74,7 +74,7 @@ const routes: Routes = [
     AgWordCloudModule.forRoot(),
     MyDatePickerModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes,{useHash: true}),
     FormsModule,
     NguiAutoCompleteModule,
     LoadingModule.forRoot({

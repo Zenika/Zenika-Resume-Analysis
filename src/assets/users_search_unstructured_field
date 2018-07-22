@@ -1,4 +1,5 @@
 {
+  "size": 300,
   "query": {
     "match": {
       "fullContent": ""

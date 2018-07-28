@@ -3,7 +3,7 @@
   <div class="col-lg-12">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <i class="fa fa-bar-chart-o fa-fw"></i>Repartition nb personnes par compétence
+        <i class="fa fa-bar-chart-o fa-fw"></i>Repartition nombre de consultants par compétence
       </div>
 
       <div class="panel panel-info">
@@ -44,15 +44,16 @@
           <!--<div class="single-result-bloc">-->
 
           <div class="panel-heading">
-            <div class="resp-original">
-              Réponse original
+            <div class="resp-original" (click)="expanded == false ?expanded = true:expanded = false">
+              Réponse technique +
             </div>
           </div>
-          <div class="panel-body">
+          <div *ngIf="expanded == true" class="panel-body">
             <pre>
           {{resultRepartMetier | json }}
             </pre>
           </div>
+
 
         </div>
       </div>

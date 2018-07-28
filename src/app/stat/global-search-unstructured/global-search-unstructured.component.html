@@ -53,11 +53,11 @@
           <!--<div class="single-result-bloc">-->
 
           <div class="panel-heading">
-            <div class="resp-original">
-              Réponse original
+            <div class="resp-original" (click)="expanded == false ?expanded = true:expanded = false">
+              Réponse technique +
             </div>
           </div>
-          <div class="panel-body">
+          <div *ngIf="expanded == true" class="panel-body">
             <pre>
           {{resultAllFields | json }}
             </pre>

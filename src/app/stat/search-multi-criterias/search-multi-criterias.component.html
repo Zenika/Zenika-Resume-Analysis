@@ -85,8 +85,6 @@
         </div>
         <div class="panel-body">
 
-          <h3>Response structured</h3>
-
           <p> nombre de resultat :{{resultSearchCriterias?.hits.total}} </p>
 
           <table>
@@ -118,26 +116,40 @@
 
           <div class="single-result-bloc">
 
+            <div class="panel panel-info">
 
-            <div class="resp-original" style="width: 50%;">
-              <h3>Response original</h3>
-              <div>
-              <pre>
-                    {{resultSearchCriterias | json }}
-              </pre>
+
+            <div class="panel-heading">
+              <div class="resp-original" (click)="expanded == false ?expanded = true:expanded = false">
+                Réponse technique +
               </div>
             </div>
+            <div *ngIf="expanded == true" class="panel-body">
 
-
-            <div class="resp-original" style="width: 50%;">
-              <h3>Request</h3>
-              <div>
+              <div class="resp-original" style="width: 50%;">
+                <h3>Request</h3>
+                <div>
               <pre>
                     {{requestSearchCriterias | json }}
               </pre>
+                </div>
+              </div>
+
+              <div class="resp-original" style="width: 50%;">
+                <h3>Response original</h3>
+                <div>
+              <pre>
+                    {{resultSearchCriterias | json }}
+              </pre>
+                </div>
               </div>
             </div>
+
+
             </div>
+
+
+
          </div>
 
       </div>

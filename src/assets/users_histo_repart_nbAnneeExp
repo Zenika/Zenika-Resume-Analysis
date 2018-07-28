@@ -4,7 +4,7 @@
     "price": {
       "histogram": {
         "field": "nbAnneeExp",
-        "interval": 5
+        "interval": 2
       },
       "aggs": {
         "exp": {

@@ -15,11 +15,23 @@ export class SearchMultiCriteriasComponent implements OnInit {
 
   resultSearchCriterias: any;
 
+
+
+  complexCriteriaFieldNbAnneeExpOp: string = "must";
+
+  complexCriteriaGlobalSkillsOp: string = "must";
+  complexCriteriaCustomerName: string = "must";
+  complexCriteriaDescOp: string = "must";
+  whoWorkCustomerVal: string;
+  complexCriteriaWorkingDate: string = "must";
+  requestSearchCriterias: any;
+  currentNumberPage:number = 1;
+  totalNumberByPage: number = 10;
+
   maxRangeNbAnneeExp: number;
   minRangeNbAnneeExp: number;
   complexCriteriaMinRangeNbAnneeExpSelected: number;
   complexCriteriaMaxRangeNbAnneeExpSelected: number;
-  complexCriteriaFieldNbAnneeExpOp: string;
   complexCriteriaGlobalSkillsSelected:string;
   complexCriteriaDescSelected:string;
 
@@ -31,11 +43,16 @@ export class SearchMultiCriteriasComponent implements OnInit {
   // Initialized to specific date (09.10.2018).
   dateChoiceMission: any = { date: null };
 
+  // criteriaOperations = [
+  //   "must",
+  //   "must_not",
+  //   "filter",
+  //   "should"
+  // ];
+
   criteriaOperations = [
-    "must",
-    "must_not",
-    "filter",
-    "should"
+    {key : "must", text:"contient"},
+    {key : "must_not", text:"ne contient pas"}
   ];
 
   constructor(private elasticsearchService : ElasticsearchService, private httpClient: HttpClient) { }
@@ -50,17 +67,6 @@ export class SearchMultiCriteriasComponent implements OnInit {
       });
     });
   }
-
-
-  complexCriteriaGlobalSkillsOp: string;
-  complexCriteriaCustomerName: string;
-  complexCriteriaDescOp: string;
-  whoWorkCustomerVal: string;
-  complexCriteriaWorkingDate: string;
-  requestSearchCriterias: any;
-  currentNumberPage:number = 1;
-  totalNumberByPage: number = 10;
-
 
 
 
@@ -113,16 +119,16 @@ export class SearchMultiCriteriasComponent implements OnInit {
           },
         };
 
-        if(this.complexCriteriaWorkingDate == "must"){
+        if(this.complexCriteriaWorkingDate == "must" && this.dateChoiceMission != undefined && this.dateChoiceMission != ""){
           value.query.bool.must[0].nested.query.bool.must.push(rangeStartDateMission,rangeEndDateMission);
         }
-        else if(this.complexCriteriaWorkingDate == "filter"){
+        else if(this.complexCriteriaWorkingDate == "filter" && this.dateChoiceMission != undefined && this.dateChoiceMission != ""){
           value.query.bool.must[0].nested.query.bool.filter.push(rangeStartDateMission,rangeEndDateMission);
         }
-        else if(this.complexCriteriaWorkingDate == "should"){
+        else if(this.complexCriteriaWorkingDate == "should" && this.dateChoiceMission != undefined && this.dateChoiceMission != ""){
           value.query.bool.must[0].nested.query.bool.should.push(rangeStartDateMission,rangeEndDateMission);
         }
-        else if(this.complexCriteriaWorkingDate == "must_not"){
+        else if(this.complexCriteriaWorkingDate == "must_not" && this.dateChoiceMission != undefined && this.dateChoiceMission != ""){
           value.query.bool.must[0].nested.query.bool.must_not.push(rangeStartDateMission,rangeEndDateMission);
         }
       }
@@ -148,42 +154,43 @@ export class SearchMultiCriteriasComponent implements OnInit {
       }
 
 
-      if(this.complexCriteriaDescOp == "must"){
+      if(this.complexCriteriaDescOp == "must" && this.complexCriteriaDescSelected != undefined && this.complexCriteriaDescSelected != ""){
         value.query.bool.must[0].nested.query.bool.must.push(matchBlockDescMissionDesc);
       }
-      else if(this.complexCriteriaDescOp == "filter"){
+      else if(this.complexCriteriaDescOp == "filter" && this.complexCriteriaDescSelected != undefined && this.complexCriteriaDescSelected != ""){
         value.query.bool.must[0].nested.query.bool.filter.push(matchBlockDescMissionDesc);
       }
-      else if(this.complexCriteriaDescOp == "should"){
+      else if(this.complexCriteriaDescOp == "should" && this.complexCriteriaDescSelected != undefined && this.complexCriteriaDescSelected != ""){
         value.query.bool.must[0].nested.query.bool.should.push(matchBlockDescMissionDesc);
       }
-      else if(this.complexCriteriaDescOp == "must_not"){
+      else if(this.complexCriteriaDescOp == "must_not" && this.complexCriteriaDescSelected != undefined && this.complexCriteriaDescSelected != ""){
         value.query.bool.must[0].nested.query.bool.must_not.push(matchBlockDescMissionDesc);
       }
 
-      if(this.complexCriteriaCustomerName == "must"){
+      if(this.complexCriteriaCustomerName == "must" && this.whoWorkCustomerVal != undefined && this.whoWorkCustomerVal != ""){
         value.query.bool.must[0].nested.query.bool.must.push(matchBlockCustomerMission);
       }
-      else if(this.complexCriteriaCustomerName == "filter"){
+      else if(this.complexCriteriaCustomerName == "filter" && this.whoWorkCustomerVal != undefined && this.whoWorkCustomerVal != ""){
         value.query.bool.must[0].nested.query.bool.filter.push(matchBlockCustomerMission);
       }
-      else if(this.complexCriteriaCustomerName == "should"){
+      else if(this.complexCriteriaCustomerName == "should" && this.whoWorkCustomerVal != undefined && this.whoWorkCustomerVal != ""){
         value.query.bool.must[0].nested.query.bool.should.push(matchBlockCustomerMission);
       }
-      else if(this.complexCriteriaCustomerName == "must_not"){
+      else if(this.complexCriteriaCustomerName == "must_not" && this.whoWorkCustomerVal != undefined  && this.whoWorkCustomerVal != ""){
         value.query.bool.must[0].nested.query.bool.must_not.push(matchBlockCustomerMission);
       }
 
-      if(this.complexCriteriaGlobalSkillsOp == "must"){
+
+      if(this.complexCriteriaGlobalSkillsOp == "must" && this.complexCriteriaGlobalSkillsSelected != undefined && this.complexCriteriaGlobalSkillsSelected != ""){
         value.query.bool.must.push(termBlock);
       }
-      else if(this.complexCriteriaGlobalSkillsOp == "filter"){
+      else if(this.complexCriteriaGlobalSkillsOp == "filter"  && this.complexCriteriaGlobalSkillsSelected != undefined && this.complexCriteriaGlobalSkillsSelected != ""){
         filterClauses.push(termBlock);
       }
-      else if(this.complexCriteriaGlobalSkillsOp == "should"){
+      else if(this.complexCriteriaGlobalSkillsOp == "should"  && this.complexCriteriaGlobalSkillsSelected != undefined && this.complexCriteriaGlobalSkillsSelected != ""){
         shouldClauses.push(termBlock);
       }
-      else if(this.complexCriteriaGlobalSkillsOp == "must_not"){
+      else if(this.complexCriteriaGlobalSkillsOp == "must_not" && this.complexCriteriaGlobalSkillsSelected != undefined && this.complexCriteriaGlobalSkillsSelected != ""){
         mustNotClauses.push(termBlock);
       }
 

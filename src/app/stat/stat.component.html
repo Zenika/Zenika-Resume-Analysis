@@ -21,7 +21,7 @@
 </ng2slider>
  <select [(ngModel)]="complexCriteriaFieldNbAnneeExpOp">
   <option value="">--Style d'operation--</option>
-  <option *ngFor="let m of criteriaOperations" [value]="m">{{m}}</option>
+  <option *ngFor="let m of criteriaOperations" [value]="m.key">{{m.text}}</option>
 </select>
   </div>
 
@@ -79,7 +79,8 @@
 
     <select [(ngModel)]="complexCriteriaWorkingDate">
       <option value="">--Style d'operation--</option>
-      <option *ngFor="let m of criteriaOperations" [value]="m">{{m}}</option>
+      <option *ngFor="let m of criteriaOperations" [value]="m.key">
+        {{m.text}}</option>
     </select>
 </div>
 </div>
@@ -112,7 +113,7 @@
           <td>{{user._source.lastname}}</td>
           <td [innerHTML]="user.highlight && user.highlight['missions.description']">
           </td>
-          <td><a href="https://resume.zenika.com/{{user._id}}">Voir le cv</a></td>
+          <td><a target="_blank" href="https://resume.zenika.com/{{user._id}}">Voir le cv</a></td>
         </tr>
         </tbody>
       </table>

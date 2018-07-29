@@ -10,62 +10,84 @@
       <!-- /.panel-heading -->
       <div class="panel-body">
 
-        <div class="form-group">
-          <label>Range - Années expérience</label>
-          <ng2slider *ngIf="minRangeNbAnneeExp"
-                     [min]="minRangeNbAnneeExp"
-                     [max]="maxRangeNbAnneeExp"
-                     [startValue]="minRangeNbAnneeExp"
-                     [endValue]="maxRangeNbAnneeExp"
-                     stepValue="1"
-                     (onRangeChanged)="nbAnneeExpRangeChange($event)">
-          </ng2slider>
-          <select [(ngModel)]="complexCriteriaFieldNbAnneeExpOp">
-            <option value="">--Style d'operation--</option>
-            <option *ngFor="let m of criteriaOperations" [value]="m">{{m}}</option>
-          </select>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Range - Années expérience</label>
+
+          <div class="col-sm-4">
+            <ng2slider *ngIf="minRangeNbAnneeExp"
+                       [min]="minRangeNbAnneeExp"
+                       [max]="maxRangeNbAnneeExp"
+                       [startValue]="minRangeNbAnneeExp"
+                       [endValue]="maxRangeNbAnneeExp"
+                       stepValue="1"
+                       (onRangeChanged)="nbAnneeExpRangeChange($event)">
+            </ng2slider>
+          </div>
+          <div class="col-sm-1">
+            <select class="form-control" [(ngModel)]="complexCriteriaFieldNbAnneeExpOp">
+              <option value="">--Style d'operation--</option>
+              <option *ngFor="let m of criteriaOperations" [value]="m.key">{{m.text}}</option>
+            </select>
+          </div>
         </div>
 
 
 
-        <div class="form-group">
-          <label>Compétences techniques (java,css,..)</label>
-          <input type="text" (input)="onComplexCriteriaGlobalSkillsChange($event.target.value)"  size="30"/>
+           <div class="form-group row">
 
-          <select [(ngModel)]="complexCriteriaGlobalSkillsOp">
-            <option value="">--Style d'operation--</option>
-            <option *ngFor="let m of criteriaOperations" [value]="m">{{m}}</option>
-          </select>
+             <label class="col-sm-2 col-form-label">Compétences techniques (java,css,..)</label>
+             <div class="col-sm-4">
+               <input class="form-control" type="text"  (input)="onComplexCriteriaGlobalSkillsChange($event.target.value)"  size="30"/>
+             </div>
+             <div class="col-sm-1">
+               <select class="form-control" [(ngModel)]="complexCriteriaGlobalSkillsOp">
+                <option value="">--Style d'operation--</option>
+                <option *ngFor="let m of criteriaOperations" [value]="m.key">{{m.text}}</option>
+              </select>
+             </div>
+
+          </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Mission - description</label>
+          <div class="col-sm-4">
+            <input class="form-control" type="text" (input)="onComplexCriteriaMissionDescChange($event.target.value)"  size="40"/>
+          </div>
+          <div class="col-sm-1">
+            <select class="form-control" [(ngModel)]="complexCriteriaDescOp">
+              <option value="">--Style d'operation--</option>
+              <option *ngFor="let m of criteriaOperations" [value]="m.key">{{m.text}}</option>
+            </select>
+          </div>
         </div>
 
-        <div class="form-group">
-          <label>Mission - description</label>
-          <input type="text" (input)="onComplexCriteriaMissionDescChange($event.target.value)"  size="40"/>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Nom du client : </label>
 
-          <select [(ngModel)]="complexCriteriaDescOp">
-            <option value="">--Style d'operation--</option>
-            <option *ngFor="let m of criteriaOperations" [value]="m">{{m}}</option>
-          </select>
+          <div class="col-sm-4">
+            <input class="form-control" type="text" [(ngModel)]="whoWorkCustomerVal"/>
+          </div>
+          <div class="col-sm-1">
+            <select  class="form-control"  [(ngModel)]="complexCriteriaCustomerName">
+              <option value="">--Style d'operation--</option>
+              <option *ngFor="let m of criteriaOperations" [value]="m.key">{{m.text}}</option>
+            </select>
+          </div>
         </div>
 
-        <div class="form-group">
-          <label>Nom du client : </label>
-          <input type="text" [(ngModel)]="whoWorkCustomerVal" placeholder="contient.."/>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Date de travail : </label>
+          <div class="col-sm-4">
+            <my-date-picker class="datePick" [options]="myDatePickerOptions"
+                            [(ngModel)]="dateChoiceMission"></my-date-picker>
+          </div>
+          <div class="col-sm-1">
 
-          <select [(ngModel)]="complexCriteriaCustomerName">
-            <option value="">--Style d'operation--</option>
-            <option *ngFor="let m of criteriaOperations" [value]="m">{{m}}</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>Date de travail : </label>
-          <my-date-picker class="datePick" [options]="myDatePickerOptions"
-                          [(ngModel)]="dateChoiceMission"></my-date-picker>
-          <select [(ngModel)]="complexCriteriaWorkingDate">
-            <option value="">--Style d'operation--</option>
-            <option *ngFor="let m of criteriaOperations" [value]="m">{{m}}</option>
-          </select>
+            <select  class="form-control"  [(ngModel)]="complexCriteriaWorkingDate">
+              <option value="">--Style d'operation--</option>
+              <option *ngFor="let m of criteriaOperations" [value]="m.key">{{m.text}}</option>
+            </select>
+          </div>
         </div>
 
 
@@ -80,7 +102,7 @@
 
         <div class="panel-heading">
           <div class="resp-structured">
-            Réponse
+            Résultat
           </div>
         </div>
         <div class="panel-body">
@@ -100,7 +122,7 @@
             <tr *ngFor="let user of resultSearchCriterias?.hits.hits | paginate: { itemsPerPage: totalNumberByPage, currentPage: currentNumberPage , totalItems: resultSearchCriterias?.hits.total}">
               <td>{{user._source.firstname}}</td>
               <td>{{user._source.lastname}}</td>
-              <td><a href="https://resume.zenika.com/{{user._id}}">Voir le cv</a></td>
+              <td><a target="_blank" href="https://resume.zenika.com/{{user._id}}">Voir le cv</a></td>
               <td [innerHTML]="user.highlight && user.highlight['missions.description']">
               </td>
 

@@ -15,7 +15,7 @@ export class StatComponent implements OnInit {
 
 
   expanded: boolean = false;
-  
+
   resultSearchCriterias: any;
 
   maxRangeNbAnneeExp: number;
@@ -35,11 +35,11 @@ export class StatComponent implements OnInit {
   dateChoiceMission: any = { date: null };
 
   criteriaOperations = [
-    "must",
-    "must_not",
-    "filter",
-    "should"
+    {key : "must", text:"contient"},
+    {key : "must_not", text:"ne contient pas"}
     ];
+
+
 
   constructor(private elasticsearchService : ElasticsearchService, private httpClient: HttpClient) { }
 

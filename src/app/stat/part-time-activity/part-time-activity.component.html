@@ -10,7 +10,7 @@
       <div class="panel-body">
         <select class="form-control" [(ngModel)]="hobbieMode" (change)="hobbieChangeMode($event)">
           <option value="">--Mode de recherche--</option>
-          <option *ngFor="let m of hobbieModeChoices" [value]="m">{{m}}</option>
+          <option *ngFor="let m of hobbieModeChoices" [value]="m.key">{{m.text}}</option>
         </select>
 
         <br>

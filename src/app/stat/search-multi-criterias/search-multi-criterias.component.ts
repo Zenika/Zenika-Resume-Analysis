@@ -11,6 +11,8 @@ import {IMyDpOptions} from "mydatepicker";
 })
 export class SearchMultiCriteriasComponent implements OnInit {
 
+  expanded: boolean = false;
+
   resultSearchCriterias: any;
 
   maxRangeNbAnneeExp: number;

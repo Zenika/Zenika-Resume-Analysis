@@ -10,6 +10,8 @@ import {HttpClient} from "@angular/common/http";
 })
 export class UserSearchComponent implements OnInit {
 
+  expanded: boolean = false;
+
   resultFullname : any;
 
   constructor(private elasticsearchService : ElasticsearchService, private httpClient: HttpClient) { }

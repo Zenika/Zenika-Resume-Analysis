@@ -10,6 +10,8 @@ import {HttpClient} from "@angular/common/http";
 })
 export class GlobalSearchComponent implements OnInit {
 
+  expanded: boolean = false;
+
   resultAllFields : any;
 
 

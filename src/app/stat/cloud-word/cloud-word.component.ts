@@ -11,6 +11,8 @@ import {AgWordCloudData, AgWordCloudDirective} from "angular4-word-cloud";
 })
 export class CloudWordComponent implements OnInit {
 
+  expanded: boolean = false;
+
   results : any;
 
   @ViewChild('word_cloud_chart') chart: AgWordCloudDirective;

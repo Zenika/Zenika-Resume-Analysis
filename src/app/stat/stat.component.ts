@@ -14,6 +14,8 @@ import {IMyDpOptions} from 'mydatepicker';
 export class StatComponent implements OnInit {
 
 
+  expanded: boolean = false;
+  
   resultSearchCriterias: any;
 
   maxRangeNbAnneeExp: number;

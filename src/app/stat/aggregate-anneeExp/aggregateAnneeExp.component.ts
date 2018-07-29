@@ -10,6 +10,8 @@ import {HttpClient} from "@angular/common/http";
 })
 export class AggregateAnneeExpComponent implements OnInit {
 
+  expanded: boolean = false;
+
   resultHistoRepartNbAnneeExp: any;
 
   constructor(private elasticsearchService : ElasticsearchService, private httpClient: HttpClient) { }

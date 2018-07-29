@@ -21,6 +21,8 @@ import {
 })
 export class StatHistoNbAnneeExpComponent implements OnInit {
 
+  expanded: boolean = false;
+
   private d3: D3;
   private parentNativeElement: any;
   private d3Svg: Selection<SVGSVGElement, any, null, undefined>;

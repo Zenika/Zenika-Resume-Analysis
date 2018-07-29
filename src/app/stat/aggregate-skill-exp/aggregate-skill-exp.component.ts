@@ -10,6 +10,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class AggregateSkillExpComponent implements OnInit {
 
+  expanded: boolean = false;
   resultRepartMetier: any;
 
   constructor(private elasticsearchService: ElasticsearchService, private httpClient: HttpClient) {

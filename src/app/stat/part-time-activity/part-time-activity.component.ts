@@ -11,6 +11,8 @@ import {HttpClient} from "@angular/common/http";
 })
 export class PartTimeActivityComponent implements OnInit {
 
+  expanded: boolean = false;
+
   resultHobbies : any;
 
   hobbieMode: string;

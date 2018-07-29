@@ -10,6 +10,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class GlobalSearchUnstructuredComponent implements OnInit {
 
+  expanded: boolean = false;
 
   resultAllFields : any;
 

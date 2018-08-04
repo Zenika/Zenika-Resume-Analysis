@@ -120,7 +120,6 @@
             <tbody>
             <tr *ngFor="let user of resultSearchCriterias?.hits.hits | paginate: { itemsPerPage: totalNumberByPage, currentPage: currentNumberPage , totalItems: resultSearchCriterias?.hits.total}">
               <td>{{user._source.fullname}}</td>
-              <td>{{user._source.lastname}}</td>
               <td><a target="_blank" href="https://resume.zenika.com/{{user._id}}">Voir le cv</a></td>
               <td [innerHTML]="user.highlight && user.highlight['missions.description']">
               </td>

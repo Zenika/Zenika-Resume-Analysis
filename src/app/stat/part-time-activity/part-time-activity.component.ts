@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {ElasticsearchService} from "../../common/elasticsearch/ElasticsearchService";
 import {Observable} from "rxjs/Observable";
 import {HttpClient} from "@angular/common/http";
+import 'rxjs/add/observable/of';
 
 @Component({
   selector: 'app-part-time-activity',

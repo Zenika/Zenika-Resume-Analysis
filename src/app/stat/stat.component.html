@@ -101,7 +101,6 @@
       <table>
         <thead>
         <tr>
-          <th>prénom</th>
           <th>nom</th>
           <th>mission description</th>
           <th>cv</th>
@@ -109,7 +108,7 @@
         </thead>
         <tbody>
         <tr *ngFor="let user of resultSearchCriterias?.hits.hits | paginate: { itemsPerPage: totalNumberByPage, currentPage: currentNumberPage , totalItems: resultSearchCriterias?.hits.total}">
-          <td>{{user._source.firstname}}</td>
+          <td>{{user._source.fullname}}</td>
           <td>{{user._source.lastname}}</td>
           <td [innerHTML]="user.highlight && user.highlight['missions.description']">
           </td>

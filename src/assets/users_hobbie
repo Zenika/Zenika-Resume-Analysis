@@ -1,5 +1,5 @@
 {
-"_source": [ "firstname", "lastname","email","hobbies" ],
+"_source": [ "firstname", "fullname", "lastname","email","hobbies" ],
 "size": 300,
 "query": {
 "match": {

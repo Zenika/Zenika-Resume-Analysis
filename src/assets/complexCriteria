@@ -2,6 +2,7 @@
   "from" : 0,
   "size" : 10,
   "_source": [
+    "fullname",
     "firstname",
     "lastname",
     "email",

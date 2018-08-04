@@ -25,7 +25,6 @@
           <table>
             <thead>
             <tr>
-              <th>prenom</th>
               <th>nom</th>
               <th>mail</th>
               <th>cv</th>
@@ -33,8 +32,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let user of resultAllFields?.hits.hits">
-              <td>{{user._source.firstname}}</td>
-              <td>{{user._source.lastname}}</td>
+              <td>{{user._source.fullname}}</td>
               <td>{{user._source.email}}</td>
               <td><a target="_blank" href="https://resume.zenika.com/{{user._id}}">Voir le cv</a></td>
             </tr>

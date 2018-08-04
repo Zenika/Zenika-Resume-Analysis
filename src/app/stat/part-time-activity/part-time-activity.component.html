@@ -8,13 +8,13 @@
       </div>
       <!-- /.panel-heading -->
       <div class="panel-body">
-        <select class="form-control" [(ngModel)]="hobbieMode" (change)="hobbieChangeMode($event)">
-          <option value="">--Mode de recherche--</option>
-          <option *ngFor="let m of hobbieModeChoices" [value]="m.key">{{m.text}}</option>
-        </select>
+        <!--<select class="form-control" [(ngModel)]="hobbieMode" (change)="hobbieChangeMode($event)">-->
+          <!--<option value="">&#45;&#45;Mode de recherche&#45;&#45;</option>-->
+          <!--<option *ngFor="let m of hobbieModeChoices" [value]="m.key">{{m.text}}</option>-->
+        <!--</select>-->
 
-        <br>
-        <br>
+        <!--<br>-->
+        <!--<br>-->
         <input class="form-control" type="text" *ngIf="hobbieMode == 'match'" (input)="onHobbyChangeNormal($event.target.value)" placeholder="Choix du hobby"/>
 
         <div *ngIf="hobbieMode == 'fuzzy'">
@@ -23,7 +23,7 @@
         </div>
 
         <div *ngIf="hobbieMode == 'autocomplete'">
-          <input class="form-control" auto-complete [(ngModel)]="hobbieAutoComplete"  (valueChanged)="onHobbyChangeAutocomplete($event)"   [source]="observableSource.bind(this)"     />
+          <input class="form-control" auto-complete [(ngModel)]="hobbieAutoComplete" placeholder="Hobbie..." (valueChanged)="onHobbyChangeAutocomplete($event)"   [source]="observableSource.bind(this)"     />
         </div>
       </div>
       <div class="panel panel-info">
@@ -37,8 +37,8 @@
       </div>
           <div class="panel-body">
 
-          <p> nombre de resultat :{{resultHobbies?.hits.total}} </p>
-            <table >
+          <p> <b> nombre de resultat :{{resultHobbies?.hits.total}}</b> </p>
+            <table>
               <thead>
               <tr>
                 <th>prenom</th>

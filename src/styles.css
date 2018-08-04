@@ -70,7 +70,9 @@ body {
 .sidebar .sidebar-nav.navbar-collapse {
   padding-left: 0;
   padding-right: 0;
+  margin-top: 2px;
 }
+
 .sidebar .sidebar-search {
   padding: 15px;
 }
@@ -439,6 +441,21 @@ table
   border:4px solid #f5f5f5;
   padding:2px;
 }
+
+.panel-body table tbody tr:hover {
+  background-color: #dfedf5;
+}
+
+.panel-body table tr{
+  cursor: pointer;
+}
+
+.panel-body table thead tr{
+  background-color: #AA3939;
+  color: white;
+  height: 35px;
+}
+
 thead
 {
   background-color:#f5f5f5;
@@ -449,11 +466,25 @@ td
 }
 th
 {
-  padding: 0 2px 5px;
+  padding: 0 8px 5px;
   line-height: 15px;
 }
 
 .resp-original{
-  cursor: pointer;
+  cursor: pointer
 }
 
+.navbar-brand{
+  color: white !important;
+}
+
+.navbar-static-top{
+  background-color: #AA3939;
+  margin-right: 30px;
+}
+
+.logo{
+  float: left;
+  padding: 3px;
+  width: 50px;
+}

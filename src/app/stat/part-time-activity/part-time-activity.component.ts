@@ -15,7 +15,8 @@ export class PartTimeActivityComponent implements OnInit {
 
   resultHobbies : any;
 
-  hobbieMode: string;
+  hobbieMode: string = 'autocomplete';
+
   hobbieModeChoices = [
     {key:"match",text : "recherche exact"},
     {key:"fuzzy",text : "recherche approximative"},

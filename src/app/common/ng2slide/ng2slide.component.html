@@ -1,3 +1,4 @@
+<span>Entre </span>
 <div class="slider-input-block">
   <input type="number"
          id="{{id + '-start-value'}}"
@@ -10,7 +11,9 @@
          (change)="valueChanged($event, 0)"
          #startInput
   />
+
 </div>
+<span> et </span>
 <div *ngIf="isRange" class="slider-input-block">
   <input type="number"
          id="{{id + '-end-value'}}"

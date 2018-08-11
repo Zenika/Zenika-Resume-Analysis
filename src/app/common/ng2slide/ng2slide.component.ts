@@ -230,6 +230,8 @@ export class Ng2SliderComponent    {
     this.CDR.markForCheck();
     this.CDR.detectChanges();
 
+    this.rangeChangedEvent.emit(this);
+
   }
 
   ngAfterViewInit() {

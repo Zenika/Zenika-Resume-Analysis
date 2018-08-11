@@ -1,11 +1,10 @@
 .range-ribbon {position: absolute; width: 100%; height: 10px; border: 1px solid #ddd; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; background: #eee 50% top repeat-x; color: #333; top: 4px;}
 .slider-handle {box-sizing: content-box;position: absolute; border: 1px solid #ccc; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; background: #f6f6f6 50% 50% repeat-x; width: 18px; height: 18px; box-sizing: border-box;}
-.slider-container{width: 30%;height: 26px; margin-top: 7px; margin-bottom: 12px}
+.slider-container{width: 100%;height: 26px; margin-top: 7px; margin-bottom: 12px}
 .ui-slider.ui-slider-horizontal {
   height: 26px;
   margin-top: 7px;
 }
 .slider-input-block {
-  width: 150px;
   display: inline-block;
 }

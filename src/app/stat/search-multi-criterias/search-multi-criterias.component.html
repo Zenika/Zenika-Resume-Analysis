@@ -23,7 +23,7 @@
                        (onRangeChanged)="nbAnneeExpRangeChange($event)">
             </ng2slider>
           </div>
-          <div class="col-sm-1">
+          <div class="col-sm-2">
             <select class="form-control" [(ngModel)]="complexCriteriaFieldNbAnneeExpOp">
               <option value="">--Style d'operation--</option>
               <option *ngFor="let m of criteriaOperations" [value]="m.key">{{m.text}}</option>
@@ -39,11 +39,11 @@
              <div class="col-sm-4">
                <input class="form-control" type="text"  (input)="onComplexCriteriaGlobalSkillsChange($event.target.value)"  size="30"/>
              </div>
-             <div class="col-sm-1">
+             <div class="col-sm-2">
                <select class="form-control" [(ngModel)]="complexCriteriaGlobalSkillsOp">
                 <option value="">--Style d'operation--</option>
-                <option *ngFor="let m of criteriaOperations" [value]="m.key">{{m.text}}</option>
-              </select>
+                <option *ngFor="let m of criteriaOperationsWithExactSearch" [value]="m.key">{{m.text}}</option>
+               </select>
              </div>
 
           </div>
@@ -53,7 +53,7 @@
           <div class="col-sm-4">
             <input class="form-control" type="text" (input)="onComplexCriteriaMissionDescChange($event.target.value)"  size="40"/>
           </div>
-          <div class="col-sm-1">
+          <div class="col-sm-2">
             <select class="form-control" [(ngModel)]="complexCriteriaDescOp">
               <option value="">--Style d'operation--</option>
               <option *ngFor="let m of criteriaOperations" [value]="m.key">{{m.text}}</option>
@@ -67,7 +67,7 @@
           <div class="col-sm-4">
             <input class="form-control" type="text" [(ngModel)]="whoWorkCustomerVal"/>
           </div>
-          <div class="col-sm-1">
+          <div class="col-sm-2">
             <select  class="form-control"  [(ngModel)]="complexCriteriaCustomerName">
               <option value="">--Style d'operation--</option>
               <option *ngFor="let m of criteriaOperations" [value]="m.key">{{m.text}}</option>
@@ -81,9 +81,9 @@
             <my-date-picker class="datePick" [options]="myDatePickerOptions"
                             [(ngModel)]="dateChoiceMission"></my-date-picker>
           </div>
-          <div class="col-sm-1">
+          <div class="col-sm-2">
 
-            <select  class="form-control"  [(ngModel)]="complexCriteriaWorkingDate">
+            <select class="form-control"  [(ngModel)]="complexCriteriaWorkingDate">
               <option value="">--Style d'operation--</option>
               <option *ngFor="let m of criteriaOperations" [value]="m.key">{{m.text}}</option>
             </select>

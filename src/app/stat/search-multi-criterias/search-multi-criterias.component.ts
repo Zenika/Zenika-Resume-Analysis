@@ -55,6 +55,16 @@ export class SearchMultiCriteriasComponent implements OnInit {
     {key : "must_not", text:"ne contient pas"}
   ];
 
+
+  criteriaOperationsWithExactSearch = [
+    {key : "must", text:"contient"},
+    {key : "must_not", text:"ne contient pas"},
+    {key : "searchExact", text:"recherche exacte"}
+  ];
+
+
+
+
   constructor(private elasticsearchService : ElasticsearchService, private httpClient: HttpClient) { }
 
   ngOnInit() {
@@ -87,11 +97,23 @@ export class SearchMultiCriteriasComponent implements OnInit {
           nbAnneeExp : {gte : {},lt: {}},
         }
       };
-      let termBlock = {
-        term:{
-          globalSkills : null,
-        }
-      };
+
+      let skillBlock;
+
+      if(this.complexCriteriaGlobalSkillsOp == "searchExact"){
+        skillBlock = {
+          term:{
+            'globalSkills.keyword' :  this.complexCriteriaGlobalSkillsSelected,
+          }
+        };
+      }else{
+        skillBlock = {
+          match:{
+            globalSkills :  this.complexCriteriaGlobalSkillsSelected,
+          }
+        };
+      }
+
       let matchBlockDescMissionDesc = {
         match:{
           "missions.description" : null
@@ -136,7 +158,6 @@ export class SearchMultiCriteriasComponent implements OnInit {
       rangeBlock.range.nbAnneeExp.gte = this.complexCriteriaMinRangeNbAnneeExpSelected;
       rangeBlock.range.nbAnneeExp.lt = this.complexCriteriaMaxRangeNbAnneeExpSelected;
 
-      termBlock.term.globalSkills = this.complexCriteriaGlobalSkillsSelected;
       matchBlockDescMissionDesc.match["missions.description"] = this.complexCriteriaDescSelected;
       matchBlockCustomerMission.match["missions.location"] = this.whoWorkCustomerVal;
 
@@ -181,17 +202,17 @@ export class SearchMultiCriteriasComponent implements OnInit {
       }
 
 
-      if(this.complexCriteriaGlobalSkillsOp == "must" && this.complexCriteriaGlobalSkillsSelected != undefined && this.complexCriteriaGlobalSkillsSelected != ""){
-        value.query.bool.must.push(termBlock);
+      if((this.complexCriteriaGlobalSkillsOp == "must" || this.complexCriteriaGlobalSkillsOp == "searchExact") && this.complexCriteriaGlobalSkillsSelected != undefined && this.complexCriteriaGlobalSkillsSelected != ""){
+        value.query.bool.must.push(skillBlock);
       }
       else if(this.complexCriteriaGlobalSkillsOp == "filter"  && this.complexCriteriaGlobalSkillsSelected != undefined && this.complexCriteriaGlobalSkillsSelected != ""){
-        filterClauses.push(termBlock);
+        filterClauses.push(skillBlock);
       }
       else if(this.complexCriteriaGlobalSkillsOp == "should"  && this.complexCriteriaGlobalSkillsSelected != undefined && this.complexCriteriaGlobalSkillsSelected != ""){
-        shouldClauses.push(termBlock);
+        shouldClauses.push(skillBlock);
       }
       else if(this.complexCriteriaGlobalSkillsOp == "must_not" && this.complexCriteriaGlobalSkillsSelected != undefined && this.complexCriteriaGlobalSkillsSelected != ""){
-        mustNotClauses.push(termBlock);
+        mustNotClauses.push(skillBlock);
       }
 
       if(this.complexCriteriaFieldNbAnneeExpOp == "must"){

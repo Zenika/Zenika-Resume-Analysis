@@ -52,7 +52,8 @@ export class PartTimeActivityComponent implements OnInit {
 
   onHobbyChangeNormal(choice) {
     this.httpClient.get('assets/users_hobbie').subscribe((value:any)=> {
-      value.query.match["hobbies.folded_lowercase"] = choice;
+//      value.query.match["hobbies.folded_lowercase"] = choice;
+      value.query.term["hobbies.keyword"] = choice;
       this.elasticsearchService.executePostRequest(value).subscribe(r =>{
         this.resultHobbies = r;
       });

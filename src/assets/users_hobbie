@@ -2,8 +2,8 @@
 "_source": [ "firstname", "fullname", "lastname","email","hobbies" ],
 "size": 300,
 "query": {
-"match": {
-"hobbies.folded_lowercase": "Cinema"
+"term": {
+"hobbies.keyword": "Cinema"
   }
 }
 }

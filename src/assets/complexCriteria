@@ -5,6 +5,7 @@
     "fullname",
     "firstname",
     "lastname",
+    "lastUpdate",
     "email",
     "nbAnneeExp",
     "globalSkills",

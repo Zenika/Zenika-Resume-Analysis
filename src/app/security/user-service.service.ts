@@ -20,4 +20,13 @@ export class UserService {
       });
   }
 
+  getCurrentUser() : Promise<boolean> {
+    return this.http.get(environment.backendApi+"/user")
+      .toPromise()
+      .then(res => res)
+      .catch(err => {
+        return null;
+      });
+  }
+
 }

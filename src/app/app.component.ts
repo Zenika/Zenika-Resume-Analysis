@@ -17,7 +17,7 @@ export class AppComponent {
 
     this.loading = true;
 
-    this.userService.isLogged().then(value => {
+    this.userService.getCurrentUser().then(value => {
       this.loading = false;
       if(!value){
         window.location.href = environment.backendApi+"/login/google?redirect_url_additional="+window.location.origin;

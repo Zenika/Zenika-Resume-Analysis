@@ -43,6 +43,7 @@
               <tr>
                 <th>nom</th>
                 <th>mail</th>
+                <th>Date de dernière mise à jour</th>
                 <th>hobbies</th>
                 <th>cv</th>
               </tr>
@@ -51,6 +52,7 @@
               <tr *ngFor="let user of resultHobbies?.hits.hits">
                 <td>{{user._source.fullname}}</td>
                 <td>{{user._source.email}}</td>
+                <td>{{user._source.lastUpdate | date: 'dd/MM/yyyy' }}</td>
                 <td>{{user._source.hobbies}}</td>
                 <td><a target="_blank"  href="https://resume.zenika.com/{{user._id}}">Voir le cv</a></td>
 

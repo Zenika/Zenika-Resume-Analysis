@@ -32,7 +32,7 @@ import {Ng2StyledDirective} from "./common/ng2-styled-directive/ng2-styled.direc
 import {UserService} from "./security/user-service.service";
 import {WithCredentialsInterceptor} from "./security/WithCredentialsInterceptor";
 import {ANIMATION_TYPES, LoadingModule} from "ngx-loading";
-
+import {NgPipesModule} from 'ngx-pipes';
 
 const routes: Routes = [
   {path: 'part-time/hobby', component: PartTimeActivityComponent},
@@ -71,6 +71,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     NgxPaginationModule,
+    NgPipesModule,
     AgWordCloudModule.forRoot(),
     MyDatePickerModule,
     HttpClientModule,

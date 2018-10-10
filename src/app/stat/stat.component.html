@@ -111,7 +111,7 @@
           <td>{{user._source.fullname}}</td>
           <td [innerHTML]="user.highlight && user.highlight['missions.description']">
           </td>
-          <td><a target="_blank" href="https://resume.zenika.com/{{user._id}}">Voir le cv</a></td>
+          <td><a target="_blank" href="https://resume.zenika.com/#/app/{{user._source.firstname | latinise | slugify}}-{{user._source.lastname | latinise | slugify}}">Voir le cv</a></td>
         </tr>
         </tbody>
       </table>

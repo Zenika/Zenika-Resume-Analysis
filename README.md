@@ -1,46 +1,10 @@
 
 Guideline to install Zenika Resume Analysise analysis
-
-
+ 
+										
 1) Global diagram about applications communication
 
-
-                            
-                                             +-----------------+
-                                             |                 |
-                                             |  Elasticsearch  |
-                                             |                 |
-                                             +-------^---------+
-                                                     |
-                                                     |
-                                                     |  search or index users(Basic auth)
-                                                     |
-                    search or manual import(OAuth2)  |
-+------------------------+            +--------------v------------------+
-|                        |            |                                 |
-| Zenika-resume-analysis <------------> Zenika-Resume-Analysis-Backend  |
-|                        |            |                                 |
-+------------------------+            +--------------^------------------+
-                                                     |
-                                                     |
-                                                     | cronBatch getAllUser(Basic auth)
-                                                     |
-                                                     |
-                                              +------v--------+
-                                              |               |
-                                              | Zenika Resume |
-                                              |               |
-                                              +------^--------+
-                                                     |
-                                                     |
-                                                     |
-                                                     |
-                                                     |
-                                                     |
-                                               +-----v------+
-                                               | Postgresql |
-                                               +------------+
-
+ https://github.com/Zenika/Zenika-Resume-Analysis/wiki
  
 * Applications to install at minimum :
 Zenika-resume-analysis,

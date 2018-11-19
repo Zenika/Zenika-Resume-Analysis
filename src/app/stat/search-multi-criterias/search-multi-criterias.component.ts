@@ -18,7 +18,6 @@ export class SearchMultiCriteriasComponent implements OnInit {
 
 
   complexCriteriaFieldNbAnneeExpOp: string = "must";
-
   complexCriteriaGlobalSkillsOp: string = "must";
   complexCriteriaCustomerName: string = "must";
   complexCriteriaDescOp: string = "must";

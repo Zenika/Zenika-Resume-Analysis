@@ -122,7 +122,7 @@
             <tr *ngFor="let user of resultSearchCriterias?.hits.hits | paginate: { itemsPerPage: totalNumberByPage, currentPage: currentNumberPage , totalItems: resultSearchCriterias?.hits.total}">
               <td>{{user._source.fullname}}</td>
               <td>{{user._source.lastUpdate | date: 'dd/MM/yyyy' }}</td>
-              <td><a target="_blank" href="https://resume.zenika.com/#/app/{{user._source.fullname | latinise | slugify}}">Voir le cv</a></td>
+              <td><a target="_blank" href="https://resume.zenika.com/#/app/{{user._source.path}}/plop">Voir le cv</a></td>
               <td [innerHTML]="user.highlight && user.highlight['missions.description']">
               </td>
 

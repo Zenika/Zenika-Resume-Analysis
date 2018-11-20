@@ -69,7 +69,7 @@ export class SearchMultiCriteriasComponent implements OnInit {
   ngOnInit() {
 
 
-    this.httpClient.get('assets/find_all_nbanneeExp').subscribe((value:any)=> {
+    this.httpClient.get('assets/find_all_nbanneeExp.json').subscribe((value:any)=> {
       this.elasticsearchService.executePostRequest(value).subscribe(r =>{
         this.maxRangeNbAnneeExp = Math.max(...r.aggregations.exp.buckets.map(b=>b.key));
         this.minRangeNbAnneeExp = Math.min(...r.aggregations.exp.buckets.map(b=>b.key));
@@ -85,7 +85,7 @@ export class SearchMultiCriteriasComponent implements OnInit {
   }
 
   searchCriterias() {
-    this.httpClient.get('assets/complexCriteria').subscribe((value:any)=> {
+    this.httpClient.get('assets/complexCriteria.json').subscribe((value:any)=> {
       console.log("criteria req befor modif ",value);
 
       //define pagination from
@@ -241,7 +241,7 @@ export class SearchMultiCriteriasComponent implements OnInit {
       this.requestSearchCriterias = value;
 
       console.log("criteria req after modif ",value);
-      this.elasticsearchService.executePostRequest(value).subscribe(r =>{
+      this.elasticsearchService.executePostRequest(value).subscribe(r => {
         this.resultSearchCriterias = r;
       });
     });

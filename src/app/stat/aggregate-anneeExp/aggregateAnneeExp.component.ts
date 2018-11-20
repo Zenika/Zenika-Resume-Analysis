@@ -17,7 +17,7 @@ export class AggregateAnneeExpComponent implements OnInit {
   constructor(private elasticsearchService : ElasticsearchService, private httpClient: HttpClient) { }
 
   ngOnInit() {
-    this.httpClient.get('assets/users_histo_repart_nbAnneeExp').subscribe((value:any)=> {
+    this.httpClient.get('assets/users_histo_repart_nbAnneeExp.json').subscribe((value:any)=> {
       this.elasticsearchService.executePostRequest(value).subscribe(r =>{
         this.resultHistoRepartNbAnneeExp = r;
       });

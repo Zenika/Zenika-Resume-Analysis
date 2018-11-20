@@ -21,9 +21,9 @@ export class GlobalSearchComponent implements OnInit {
   }
 
   onAllFieldsChange(valueFill) {
-    this.httpClient.get('assets/users_all_fields').subscribe((value:any)=> {
+    this.httpClient.get('assets/users_all_fields.json').subscribe((value:any)=> {
       value.query.match.all_custom = valueFill;
-      this.elasticsearchService.executePostRequest(value).subscribe(r =>{
+      this.elasticsearchService.executePostRequest(value).subscribe(r => {
         this.resultAllFields = r;
       });
     });

@@ -1,5 +1,5 @@
 {
-"_source": "suggest",
+"_source": ["suggest", "path"],
 "size": 300,
 "suggest": {
         "hobbies" : {

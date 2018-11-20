@@ -21,7 +21,7 @@ export class GlobalSearchUnstructuredComponent implements OnInit {
   }
 
   onAllFieldsChange(valueFill) {
-    this.httpClient.get('assets/users_search_unstructured_field').subscribe((value:any)=> {
+    this.httpClient.get('assets/users_search_unstructured_field.json').subscribe((value:any)=> {
       value.query.match.fullContent = valueFill;
       this.elasticsearchService.executePostRequest(value).subscribe(r =>{
         this.resultAllFields = r;

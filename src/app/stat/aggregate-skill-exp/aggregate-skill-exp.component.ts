@@ -18,7 +18,7 @@ export class AggregateSkillExpComponent implements OnInit {
 
   ngOnInit() {
 
-    this.httpClient.get('assets/users_skills_stat').subscribe((value: any) => {
+    this.httpClient.get('assets/users_skills_stat.json').subscribe((value: any) => {
       this.elasticsearchService.executePostRequest(value).subscribe(r => {
         this.resultRepartMetier = r;
       });

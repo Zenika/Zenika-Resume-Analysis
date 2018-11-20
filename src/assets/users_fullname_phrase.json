@@ -1,5 +1,5 @@
 {
-"_source": [ "firstname", "lastname","email","fullname" ],
+"_source": [ "firstname", "lastname","email","fullname","path" ],
 "query": {
         "match_phrase" : {
             "fullname" : ""

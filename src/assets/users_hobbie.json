@@ -1,0 +1,9 @@
+{
+"_source": [ "firstname", "fullname", "lastname","email","hobbies","lastUpdate", "path" ],
+"size": 300,
+"query": {
+"term": {
+"hobbies.keyword": "Cinema"
+  }
+}
+}

@@ -20,7 +20,7 @@ export class UserSearchComponent implements OnInit {
   }
 
   onFullnameChange(valueFill) {
-    this.httpClient.get('assets/users_fullname_phrase').subscribe((value:any)=> {
+    this.httpClient.get('assets/users_fullname_phrase.json').subscribe((value:any)=> {
       value.query.match_phrase.fullname = valueFill;
       this.elasticsearchService.executePostRequest(value).subscribe(r =>{
         this.resultFullname = r;

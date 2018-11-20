@@ -1,5 +1,5 @@
 {
-"_source": ["firstname","missions.startDate", "missions.endDate","missions.location"],
+"_source": ["firstname","missions.startDate", "missions.endDate","missions.location", "path"],
   "query": {
     "nested": {
       "path": "missions",

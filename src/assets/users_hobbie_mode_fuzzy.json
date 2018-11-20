@@ -1,5 +1,5 @@
 {
-"_source": [ "firstname", "fullname","lastname","email","hobbies","lastUpdate" ],
+"_source": [ "firstname", "fullname","lastname","email","hobbies","lastUpdate", "path" ],
 "size": 300,
 "query": {
   "fuzzy" : {

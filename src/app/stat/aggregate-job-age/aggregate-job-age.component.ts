@@ -18,7 +18,7 @@ export class AggregateJobAgeComponent implements OnInit {
 
   ngOnInit() {
 
-    this.httpClient.get('assets/users_repartition_metier_et_moy_age').subscribe((value:any)=> {
+    this.httpClient.get('assets/users_repartition_metier_et_moy_age.json').subscribe((value:any)=> {
       this.elasticsearchService.executePostRequest(value).subscribe(r =>{
         this.resultRepartMetier = r;
       });

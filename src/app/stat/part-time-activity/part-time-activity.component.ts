@@ -31,7 +31,7 @@ export class PartTimeActivityComponent implements OnInit {
   constructor(private elasticsearchService : ElasticsearchService, private httpClient: HttpClient) { }
 
   ngOnInit() {
-    this.httpClient.get('assets/users_hobbie_autocomplete').subscribe((value:any)=> {
+    this.httpClient.get('assets/users_hobbie_autocomplete.json').subscribe((value:any)=> {
       this.queryStructHobbieAuto = value;
     });
   }
@@ -51,7 +51,7 @@ export class PartTimeActivityComponent implements OnInit {
   }
 
   onHobbyChangeNormal(choice) {
-    this.httpClient.get('assets/users_hobbie').subscribe((value:any)=> {
+    this.httpClient.get('assets/users_hobbie.json').subscribe((value:any)=> {
 //      value.query.match["hobbies.folded_lowercase"] = choice;
       value.query.term["hobbies.keyword"] = choice;
       this.elasticsearchService.executePostRequest(value).subscribe(r =>{
@@ -61,7 +61,7 @@ export class PartTimeActivityComponent implements OnInit {
   }
 
   onHobbyChangeFuzzy(choice) {
-    this.httpClient.get('assets/users_hobbie_mode_fuzzy').subscribe((value:any)=> {
+    this.httpClient.get('assets/users_hobbie_mode_fuzzy.json').subscribe((value:any)=> {
       value.query.fuzzy.hobbies.value = choice;
       value.query.fuzzy.hobbies.fuzziness = this.hobbieFuzzy;
       this.elasticsearchService.executePostRequest(value).subscribe(r =>{
@@ -82,7 +82,7 @@ export class PartTimeActivityComponent implements OnInit {
   }
 
   onHobbyChangeFuzzyOptFuziness(optFuz) {
-    this.httpClient.get('assets/users_hobbie_mode_fuzzy').subscribe((value:any)=> {
+    this.httpClient.get('assets/users_hobbie_mode_fuzzy.json').subscribe((value:any)=> {
       value.query.fuzzy.hobbies.value = this.hobbieText;
       value.query.fuzzy.hobbies.fuzziness = optFuz;
 

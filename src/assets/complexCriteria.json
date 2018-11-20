@@ -12,7 +12,8 @@
     "missions.location",
     "missions.description",
     "missions.startDate",
-    "missions.endDate"
+    "missions.endDate",
+    "path"
   ],
   "query": {
     "bool": {
